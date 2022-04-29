@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Player::Player(string playerName, string teamName, int year) {
+    this->playerName = playerName;
+    this->teamName = teamName;
+    this->year = year;
+}
 
 string Player::getName() {
     return this->playerName;
