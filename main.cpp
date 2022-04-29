@@ -11,16 +11,20 @@ using namespace std;
 
 
 int main(int argc, char *argv[]) {
-    string inputName = " ";
+    string inputName = "empty";
+    string player1Name = "empty";
+    string player2Name = "empty";
+    string teamName = "empty";
     int opt;
     //int flags = 0;
     //string nsecs;
     //int tfnd = 0;
 
 
-    while ((opt = getopt(argc, argv, "tdsi:")) != -1) {
+    while ((opt = getopt(argc, argv, ":t:d:s:i:")) != -1) {
         switch (opt) {
         case 's':
+            player1Name = optarg;
             //flags = 1;
             break;
         case 'i':
@@ -28,10 +32,12 @@ int main(int argc, char *argv[]) {
             //tfnd = 1;
             break;
         case 'd':
-            //code 
+            //code
+            player2Name = optarg; 
             break;
         case 't' :
             //code
+            teamName = optarg;
             break;
         default:
             cerr << "ERROR: incorrect input usage" << endl;
@@ -39,13 +45,15 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (inputName == " ") {
+    if (inputName == "empty") {
         cerr << "ERROR: input file name is mandatory" << endl;
         exit(1);
     }
 
     cout << "input name --> " << inputName << endl;
-    cout << " name --> " << argv[4] << endl;
+    cout << "player 1 name --> " << player1Name << endl;
+    cout << "player 2 name --> " << player2Name << endl;
+    cout << "team name --> " << teamName << endl;
     
 
 
