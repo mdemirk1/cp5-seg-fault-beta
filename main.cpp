@@ -55,6 +55,24 @@ int main(int argc, char *argv[]) {
         cerr << "ERROR: player2 provided, player1 should also be provided" << endl;
         exit(1);
     }
+    if(inputName != "empty" && player1Name == "empty" && player2Name == "empty" && teamName == "empty") {
+        // case 1, print the data in the input file
+    }
+    if(player1Name != "empty" && player2Name == "empty" && teamName == "empty") {
+        // case 2a, print player1's list of teams, sorted by year
+    }
+    if(player1Name != "empty" && player2Name == "empty" && teamName != "empty") {
+        // case 2b, print player1's list with that team only
+    }
+    if(teamName != "empty" && player1Name == "empty") {
+        // case 3, print all the players played for that team
+    }
+    if(teamName == "empty" && player2Name != "empty" && player1Name != "empty") {
+        // case 4, print the shortest teammate path, may include any team
+    }
+    if(teamName != "empty" && player2Name != "empty" && player1Name != "empty") {
+        // case 4, print the shortest teammate path, look for specific team
+    }
 
     cout << "input name --> " << inputName << endl;
     cout << "player 1 name --> " << player1Name << endl;
