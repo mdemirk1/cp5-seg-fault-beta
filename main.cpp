@@ -46,6 +46,8 @@ int main(int argc, char *argv[]) {
 
     cout << "input name --> " << inputName << endl;
     cout << " name --> " << argv[4] << endl;
+    cout << "deneme commiti" << endl;
+    // denemeler...
     
 
 
