@@ -45,6 +45,11 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    cout << "input name --> " << inputName << endl;
+    cout << "player 1 name --> " << player1Name << endl;
+    cout << "player 2 name --> " << player2Name << endl;
+    cout << "team name --> " << teamName << endl;
+    
     if (inputName == "empty") {
         // case 0a
         cerr << "ERROR: input file name is mandatory" << endl;
@@ -68,18 +73,9 @@ int main(int argc, char *argv[]) {
         // case 3, print all the players played for that team
     }
     if(teamName == "empty" && player2Name != "empty" && player1Name != "empty") {
-        // case 4, print the shortest teammate path, may include any team
+        // case 4a, print the shortest teammate path, may include any team
     }
     if(teamName != "empty" && player2Name != "empty" && player1Name != "empty") {
-        // case 4, print the shortest teammate path, look for specific team
+        // case 4b, print the shortest teammate path, look for specific team
     }
-
-    cout << "input name --> " << inputName << endl;
-    cout << "player 1 name --> " << player1Name << endl;
-    cout << "player 2 name --> " << player2Name << endl;
-    cout << "team name --> " << teamName << endl;
-    
-
-
-
 }
