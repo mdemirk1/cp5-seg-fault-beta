@@ -46,7 +46,13 @@ int main(int argc, char *argv[]) {
     }
 
     if (inputName == "empty") {
+        // case 0a
         cerr << "ERROR: input file name is mandatory" << endl;
+        exit(1);
+    }
+    if(player2Name != "empty" && player1Name == "empty") {
+        // case 0b
+        cerr << "ERROR: player2 provided, player1 should also be provided" << endl;
         exit(1);
     }
 
