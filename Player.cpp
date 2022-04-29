@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Player::Player(string playerName, string teamName, int year) {
+Player::Player(string playerName, string teamName, string year) {
     this->playerName = playerName;
     this->teamName = teamName;
     this->year = year;
@@ -17,6 +17,6 @@ string Player::getTeam() {
     return this->teamName;
 }
 
-int Player::getYear() {
+string Player::getYear() {
     return this->year;
 }

@@ -7,16 +7,16 @@ using namespace std;
 class Player {
 
     public:
-        Player(string playerName, string teamName, int year);
+        Player(string playerName, string teamName, string year);
         string getName();
         string getTeam();
-        int getYear();
+        string getYear();
 
 
     private:
         string playerName;
         string teamName;
-        int year;
+        string year;
 };
 
 
