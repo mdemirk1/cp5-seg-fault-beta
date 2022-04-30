@@ -12,6 +12,7 @@ class Player {
         string getTeam();
         string getYear();
         friend ostream& operator<<(ostream &out, Player &p);
+        bool operator==(const Player &p);
 
     private:
         string playerName;

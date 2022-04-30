@@ -30,27 +30,20 @@ int main(int argc, char *argv[]) {
     string player2Name = "empty";
     string teamName = "empty";
     int opt;
-    //int flags = 0;
-    //string nsecs;
-    //int tfnd = 0;
 
 
     while ((opt = getopt(argc, argv, ":t:d:s:i:")) != -1) {
         switch (opt) {
         case 's':
-            player1Name = optarg;
-            //flags = 1;
+            player1Name = optarg; // burasi -s Mike Lewis yazinca sadece Mike'i aliyor...
             break;
         case 'i':
             inputName = optarg;
-            //tfnd = 1;
             break;
         case 'd':
-            //code
             player2Name = optarg; 
             break;
         case 't' :
-            //code
             teamName = optarg;
             break;
         default:
@@ -59,10 +52,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    cout << "input name --> " << inputName << endl;
-    cout << "player 1 name --> " << player1Name << endl;
-    cout << "player 2 name --> " << player2Name << endl;
-    cout << "team name --> " << teamName << endl;
 
     if (inputName == "empty") {
         // case 0a
@@ -97,8 +86,18 @@ int main(int argc, char *argv[]) {
             cout << allPlayers[i] << endl;
         }
     }
+    //case 2a, beta version
     if(player1Name != "empty" && player2Name == "empty" && teamName == "empty") {
+        
+        cout << "player1Name ---> " << player1Name << endl;
+        
         // case 2a, print player1's list of teams, sorted by year
+        for (int i = 0; i < (int)allPlayers.size(); i++) {
+            if (allPlayers[i].getName() == player1Name) {
+                cout << player1Name << " played for the " << allPlayers[i].getYear() << " " 
+                << allPlayers[i].getTeam() << endl;
+            }
+        }
     }
     if(player1Name != "empty" && player2Name == "empty" && teamName != "empty") {
         // case 2b, print player1's list with that team only, sorted by year
