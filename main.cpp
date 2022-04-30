@@ -33,25 +33,48 @@ int main(int argc, char *argv[]) {
 
 
     while ((opt = getopt(argc, argv, ":t:d:s:i:")) != -1) {
-        switch (opt) {
-        case 's':
-            player1Name = optarg; // burasi -s Mike Lewis yazinca sadece Mike'i aliyor...
-            break;
-        case 'i':
-            inputName = optarg;
-            break;
-        case 'd':
-            player2Name = optarg; 
-            break;
-        case 't' :
-            teamName = optarg;
-            break;
-        default:
-            cerr << "ERROR: incorrect input usage" << endl;
-            exit(1);
+        string tempArg;
+        switch(opt) {
+            case 'i':
+                inputName = optarg;
+                break;
+            case 's':
+                tempArg.append(optarg);
+                while (optind < argc && argv[optind][0] != '-') {
+                    tempArg.append(" ");
+                    tempArg.append(argv[optind]);
+                    optind++;
+                }
+                player1Name = tempArg;
+                break;
+            case 'd':
+                tempArg.append(optarg);
+                while (optind < argc && argv[optind][0] != '-') {
+                    tempArg.append(" ");
+                    tempArg.append(argv[optind]);
+                    optind++;
+                }
+                player2Name = tempArg;
+                break;
+            case 't' :
+                tempArg.append(optarg);
+                while (optind < argc && argv[optind][0] != '-') {
+                    tempArg.append(" ");
+                    tempArg.append(argv[optind]);
+                    optind++;
+                }
+                teamName = tempArg;
+                break;
+            default:
+                cerr << "ERROR: incorrect input usage" << endl;
+                exit(1);
         }
     }
 
+    // cout << "input name --> " << inputName << endl;
+    // cout << "player 1 name --> " << player1Name << endl;
+    // cout << "player 2 name --> " << player2Name << endl;
+    // cout << "team name --> " << teamName << endl;
 
     if (inputName == "empty") {
         // case 0a
