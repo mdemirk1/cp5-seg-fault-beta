@@ -11,7 +11,7 @@ class Player {
         string getName();
         string getTeam();
         string getYear();
-
+        friend ostream& operator<<(ostream &out, Player &p);
 
     private:
         string playerName;

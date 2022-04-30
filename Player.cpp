@@ -20,3 +20,8 @@ string Player::getTeam() {
 string Player::getYear() {
     return this->year;
 }
+
+ostream& operator<<(ostream &out, Player &p) {
+    out << p.getName() << "," << p.getTeam() << "," << p.getYear();
+    return out;
+}
