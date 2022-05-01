@@ -122,9 +122,7 @@ int main(int argc, char *argv[]) {
     }
     //case 2a, beta version
     if(player1Name != "empty" && player2Name == "empty" && teamName == "empty") {
-        
-        cout << "player1Name ---> " << player1Name << endl;
-        
+        // cout << "player1Name ---> " << player1Name << endl;
         // case 2a, print player1's list of teams, sorted by year
         vector<Player> tempVec;
         for (int i = 0; i < (int)allPlayers.size(); i++) {
@@ -139,6 +137,16 @@ int main(int argc, char *argv[]) {
     }
     if(player1Name != "empty" && player2Name == "empty" && teamName != "empty") {
         // case 2b, print player1's list with that team only, sorted by year
+        vector<Player> tempVec2;
+        for (int i = 0; i < (int)allPlayers.size(); i++) {
+            if (allPlayers[i].getName() == player1Name && allPlayers[i].getTeam() == teamName) {
+                tempVec2.push_back(allPlayers[i]);
+            }
+        }
+        bubbleSort(tempVec2, (int)tempVec2.size());
+        for (int i = 0; i < (int)tempVec2.size(); i++) {
+            cout << tempVec2[i] << endl;
+        }
     }
     if(teamName != "empty" && player1Name == "empty") {
         // case 3, print all the players played for that team
