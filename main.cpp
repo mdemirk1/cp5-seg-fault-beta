@@ -2,11 +2,22 @@
 #include <fstream>
 #include <string>
 #include <unistd.h>
-#include <stdlib.h>
 #include <vector>
 #include "Player.h"
 
 using namespace std;
+
+void bubbleSort(vector<Player>&vec, int size) {
+    for(int i = size; i > 1; i--) {
+        for(int j = 0; j < i; j++) {
+            if(vec[j] > vec[j+1]) {
+                Player temp = vec.at(j);
+                vec[j] = vec[j+1];
+                vec.at(j+1) = temp;
+            }
+        }
+    }
+}
 
 vector<string> splitLine(string line) {
     vector<string> vec;
@@ -115,11 +126,15 @@ int main(int argc, char *argv[]) {
         cout << "player1Name ---> " << player1Name << endl;
         
         // case 2a, print player1's list of teams, sorted by year
+        vector<Player> tempVec;
         for (int i = 0; i < (int)allPlayers.size(); i++) {
             if (allPlayers[i].getName() == player1Name) {
-                cout << player1Name << " played for the " << allPlayers[i].getYear() << " " 
-                << allPlayers[i].getTeam() << endl;
+                tempVec.push_back(allPlayers[i]);
             }
+        }
+        bubbleSort(tempVec, (int)tempVec.size());
+        for (int i = 0; i < (int)tempVec.size(); i++) {
+            cout << tempVec[i] << endl;
         }
     }
     if(player1Name != "empty" && player2Name == "empty" && teamName != "empty") {

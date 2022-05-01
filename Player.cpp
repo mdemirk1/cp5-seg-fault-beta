@@ -26,9 +26,33 @@ ostream& operator<<(ostream &out, Player &p) {
     return out;
 }
 
-bool Player::operator==(const Player &p) {
+bool Player::operator==( Player &p) {
     if (this->playerName == p.teamName && this->teamName == p.teamName && this->year == p.year) {
         return true;
     }
     return false;
+}
+
+bool Player::operator>(Player &p) {
+    if (this->getYear() > p.getYear()) {
+        return true;
+    }
+    return false;
+}
+
+bool Player::operator<(Player &p) {
+    if (this->getYear() < p.getYear()) {
+        return true;
+    }
+    return false;
+}
+
+Player Player::operator=(Player &other) {
+     if(this == &other) {
+        return *this;
+     }
+     this->playerName = other.getName();
+     this->teamName = other.getTeam();
+     this->year = other.getYear();
+     return *this;
 }
