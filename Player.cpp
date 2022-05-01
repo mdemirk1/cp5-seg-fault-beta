@@ -46,13 +46,3 @@ bool Player::operator<(Player &p) {
     }
     return false;
 }
-
-Player Player::operator=(Player &other) {
-     if(this == &other) {
-        return *this;
-     }
-     this->playerName = other.getName();
-     this->teamName = other.getTeam();
-     this->year = other.getYear();
-     return *this;
-}

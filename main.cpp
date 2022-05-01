@@ -8,8 +8,8 @@
 using namespace std;
 
 void bubbleSort(vector<Player>&vec, int size) {
-    for(int i = size; i > 1; i--) {
-        for(int j = 0; j < i; j++) {
+    for(int i = 0; i < size-1; i++) {
+        for(int j = 0; j < size-i-1; j++) {
             if(vec[j] > vec[j+1]) {
                 Player temp = vec.at(j);
                 vec[j] = vec[j+1];

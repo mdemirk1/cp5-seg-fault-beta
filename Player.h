@@ -15,7 +15,6 @@ class Player {
         bool operator==(Player &p);
         bool operator<(Player &p);
         bool operator>(Player &p);
-        Player operator=(Player &other);
 
     private:
         string playerName;
