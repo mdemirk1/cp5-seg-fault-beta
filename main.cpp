@@ -209,11 +209,6 @@ int main(int argc, char *argv[]) {
         for (int i = (int)uniquePlayer.size() - 1; i >= 0; i--) {
             cout << uniquePlayer[i].getName() << " played " <<  uniquePlayer[i].getAppear() << " years for the " << teamName << endl;
         }
-
-
-
-
-
     }
     if(teamName == "empty" && player2Name != "empty" && player1Name != "empty") {
         // case 4a, print the shortest teammate path, may include any team
