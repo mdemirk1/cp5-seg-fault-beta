@@ -7,6 +7,14 @@ Player::Player(string playerName, string teamName, string year) {
     this->playerName = playerName;
     this->teamName = teamName;
     this->year = year;
+    this->appear = 0;
+}
+
+Player::Player() {
+    this->playerName = "empty";
+    this->teamName = "empty";
+    this->year = "empty";
+    this->appear = 0;
 }
 
 string Player::getName() {
@@ -26,7 +34,7 @@ ostream& operator<<(ostream &out, Player &p) {
     return out;
 }
 
-bool Player::operator==( Player &p) {
+bool Player::operator==(Player &p) {
     if (this->playerName == p.teamName && this->teamName == p.teamName && this->year == p.year) {
         return true;
     }
@@ -45,4 +53,12 @@ bool Player::operator<(Player &p) {
         return true;
     }
     return false;
+}
+
+void Player::incrementAppear() {
+    this->appear++;
+}
+
+int Player::getAppear() {
+    return this->appear;
 }

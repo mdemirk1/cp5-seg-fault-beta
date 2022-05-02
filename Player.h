@@ -8,6 +8,7 @@ class Player {
 
     public:
         Player(string playerName, string teamName, string year);
+        Player();
         string getName();
         string getTeam();
         string getYear();
@@ -15,11 +16,14 @@ class Player {
         bool operator==(Player &p);
         bool operator<(Player &p);
         bool operator>(Player &p);
+        void incrementAppear();
+        int getAppear();
 
     private:
         string playerName;
         string teamName;
         string year;
+        int appear;
 };
 
 
