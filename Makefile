@@ -20,18 +20,23 @@ EXE = play
 
 all: $(BIN)/$(EXE)
 
-$(BIN)/$(EXE): $(OBJ)/Player.o $(OBJ)/main.o
+$(BIN)/$(EXE): $(OBJ)/Player.o $(OBJ)/main.o 
 	$(CC) $(FLAGS)  $(OBJ)/Player.o  $(OBJ)/main.o -o $@
 
 
 $(OBJ)/Player.o: Player.h
 	$(CC) $(FLAGS) -c Player.cpp -o $@
 
-$(OBJ)/main.o: main.cpp CountingSort.cpp
+$(OBJ)/main.o: main.cpp CountingSort.cpp Graph.cpp
 	$(CC) $(FLAGS) -c main.cpp -o $@
 
 $(OBJ)/CountingSort.o: CountingSort.cpp
 	$(CC) $(FLAGS) -c CountingSort.cpp -o $@
+
+$(OBJ)/Graph.o: Graph.cpp
+	$(CC) $(FLAGS) -c Graph.cpp -o $@
+
+
 
 clean:
 	rm -f $(OBJ)/*.o $(BIN)/$(EXE) *.tar.gz
