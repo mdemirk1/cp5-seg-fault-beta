@@ -13,7 +13,8 @@ class Player {
         string getTeam();
         string getYear();
         friend ostream& operator<<(ostream &out, Player &p);
-        bool operator==(Player &p);
+        bool operator==(const Player &p);
+        bool equals(Player &p);
         bool operator<(Player &p);
         bool operator>(Player &p);
         void incrementAppear();
