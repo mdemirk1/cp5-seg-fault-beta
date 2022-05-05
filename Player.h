@@ -26,11 +26,4 @@ class Player {
         int appear;
 };
 
-
-
-
-
-
-
-
 #endif

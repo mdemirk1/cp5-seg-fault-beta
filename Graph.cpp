@@ -7,9 +7,8 @@ using namespace std;
 
 // A utility function to add an edge in an
 // undirected graph.
-static void addEdge(vector<Player> adj[])
+static void addEdge(vector<Player> adj[], int len)
 {
-	int len = *(&adj + 1) - adj;
 	for (int i = 0; i < len; i++) {
 		for (int j = 0; j < len; j++) {
 			if (adj[i].at(0).getName() != adj[j].at(0).getName()) {

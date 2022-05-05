@@ -224,25 +224,18 @@ int main() {
     Player p3("Nilsu Bozan", "Trabzonspor", "1996");
     Player p4("Misal Kelleci", "Galatasaray", "2019");
     Player p5("Ayberk Aykut", "Galatasaray", "2019");
-    
- 
-    // The below line may not work on all
-    // compilers.  If it does not work on
-    // your compiler, please replace it with
-    // following
-    // vector<int> *adj = new vector<int>[V];
+
     vector<Player> adj[5];
 	adj[0].push_back(p1);
 	adj[1].push_back(p2);
     adj[2].push_back(p3);
     adj[3].push_back(p4);
     adj[4].push_back(p5);
-    // Vertex numbers should be from 0 to 4.
-	addEdge(adj);
+	addEdge(adj, 5);
 	int len = 5;
 	for (int i = 0; i < len; i++) {
 		for (int j = 0; j < (int)adj[i].size(); j++) {
-			cout << adj[i].at(j).getName() << " ---> ";
+			cout << adj[i].at(j).getName() << " --> ";
 		}
         cout << endl;
 	}
