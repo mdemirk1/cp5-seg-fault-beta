@@ -16,6 +16,13 @@ int search(vector<Player> vec, Player p){
 	}
 }
 
+void printVector(vector<Player> vec) {
+	for(int i = 0; i < (int)vec.size(); i++) {
+		cout << vec.at(i) << "-";
+	}
+	cout << endl;
+}
+
 // A utility function to add an edge in an
 // undirected graph.
 static void addEdge(vector<Player> adj[], int len) {
@@ -37,41 +44,31 @@ static void addEdge(vector<Player> adj[], int len) {
 	}
 }
 
-vector<Player> BFS(vector<Player> adj[], int len, Player source, Player target) {
-	vector<Player> path;
-	path.push_back(source);
-	vector<vector<Player>> allPaths;
-	allPaths.push_back(path);
-	while((int)allPaths.size() != 0) {
-		cout << (int)allPaths.size() << endl;
-		vector<Player> tempPath = allPaths.at(0);
-		allPaths.erase(allPaths.begin());
-		Player lastItem = tempPath.back();
-		if(lastItem.equals(target)) {
-			return tempPath;
-		}
-		else {
-			// add new paths to the allPaths
-			for(int i = 0; i < len; i++) {
-				// cout << "gird" << endl;
-				// cout << adj[i].at(0) << endl;
-				// cout << lastItem << endl;
-				if(adj[i].at(0).equals(lastItem)) {
-					// cout << "gird2" << endl;
-					for(int j = 1; j < (int)adj[i].size(); j++) {
-						// cout << "inff" << endl;
-						if(search(tempPath, adj[i].at(j)) == -1) {
-							vector<Player> newPath = tempPath;
-							newPath.push_back(adj[i].at(j));
-							allPaths.push_back(newPath);
+// dfs works for disconnected graph, we may have a disconnected graph.
+vector<Player> DFS(vector<Player> adj[], int len, Player source, Player target, vector<Player> currentPath, vector<Player> shortestPath) {
+	currentPath.push_back(source);
+	if(source.equals(target)) {
+		return currentPath;
+	}
+	else {
+		for(int i = 0; i < len; i++) {
+			if(adj[i][0].equals(source)) {
+				for(int j = 1; j < (int)adj[i].size(); j++) {
+					if(search(currentPath, adj[i][j]) == -1) {
+						if((int)shortestPath.size() == 0 || (int)currentPath.size() < (int)shortestPath.size()) {
+							vector<Player> newPath = DFS(adj, len, adj[i][j], target, currentPath, shortestPath);
+							if((int)newPath.size() != 0) {
+								shortestPath = newPath;
+							}
 						}
 					}
 				}
 			}
 		}
+		return shortestPath;
 	}
-	return path;
 }
+
 // int main()
 // {
 //     Player p1("Dora Demirkir", "Trabzonspor", "1996");

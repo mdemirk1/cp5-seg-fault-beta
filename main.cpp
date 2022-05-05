@@ -221,14 +221,14 @@ vector<Player> allPlayers;
 int main() {
     Player p1("Dora Demirkir", "Trabzonspor", "1996");
     Player p2("Dora Demirkir", "Trabzonspor", "1998");
-	// Player p3("Dora Demirkir", "Galatasaray", "2019");
-    Player p3("Dora Demirkir", "Trabzonspor", "1997");
+	Player p3("Dora Demirkir", "Galatasaray", "2019");
+    // Player p3("Dora Demirkir", "Trabzonspor", "1997");
     Player p4("Misal Kelleci", "Galatasaray", "2019");
     Player p5("Ayberk Aykut", "Galatasaray", "2019");
     Player p6("Ayberk Aykut", "Fenerbahce", "2018");
     Player p7("Baris Turgay", "Fenerbahce", "2018");
-
-    vector<Player> adj[7];
+	int len = 7;
+    vector<Player> adj[len];
 	adj[0].push_back(p1);
 	adj[1].push_back(p2);
     adj[2].push_back(p3);
@@ -236,10 +236,10 @@ int main() {
     adj[4].push_back(p5);
     adj[5].push_back(p6);
     adj[6].push_back(p7);
-	addEdge(adj, 7);
-    vector<Player> shortestPath = BFS(adj, 7, p1, p4);
-    // iff path does not exist, infinite loop
-	int len = 7;
+	addEdge(adj, len);
+    vector<Player> currentPath;
+    vector<Player> shortestPath;
+    shortestPath = DFS(adj, len, p3, p6, currentPath, shortestPath);
 	for (int i = 0; i < len; i++) {
 		for (int j = 0; j < (int)adj[i].size(); j++) {
 			cout << adj[i].at(j).getName() << " " << adj[i].at(j).getYear() << " --> ";
