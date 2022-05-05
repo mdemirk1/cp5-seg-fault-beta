@@ -45,7 +45,7 @@ static void addEdge(vector<Player> adj[], int len) {
 }
 
 // dfs works for disconnected graph, we may have a disconnected graph.
-vector<Player> DFS(vector<Player> adj[], int len, Player source, Player target, vector<Player> currentPath, vector<Player> shortestPath) {
+vector<Player> DFS(vector<Player> adj[], int len, Player &source, Player &target, vector<Player> currentPath, vector<Player> shortestPath) {
 	currentPath.push_back(source);
 	if(source.equals(target)) {
 		return currentPath;

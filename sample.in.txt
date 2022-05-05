@@ -1,12 +1,7 @@
-Mike Lewis,Boston Celtics,2022
-Mike Lewis,Boston Celtics,2021
-Mike Lewis,Boston Celtics,2020
-Tim Peck,Boston Celtics,2020
-Tim Peck,LA Lakers,2019
-Katie Tiao,LA Lakers,2019
-Katie Tiao,LA Lakers,2018
-Katie Tiao,LA Lakers,2017
-Callisto Hess,LA Lakers,2017
-Yu Sun,LA Lakers,2017
-Yu Sun,Milwaukee Bucks,2016
-Necati Ayan,Milwaukee Bucks,2016
+Dora Demirkir,Trabzonspor,1996
+Dora Demirkir,Trabzonspor,1998
+Dora Demirkir,Galatasaray,2019
+Misal Kelleci,Galatasaray,2019
+Ayberk Aykut,Galatasaray,2019
+Ayberk Aykut,Fenerbahce,2018
+Baris Turgay,Fenerbahce,2018
