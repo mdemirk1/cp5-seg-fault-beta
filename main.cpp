@@ -57,7 +57,6 @@ int main(int argc, char *argv[]) {
     string teamName = "empty";
     int opt;
 
-
     while ((opt = getopt(argc, argv, ":t:d:s:i:")) != -1) {
         string tempArg;
         switch(opt) {
@@ -145,6 +144,10 @@ int main(int argc, char *argv[]) {
                 tempVec.push_back(allPlayers[i]);
             }
         }
+        if ((int)tempVec.size() == 0) {
+            cout << player1Name << " does not appear in the input file" << endl;
+            return 1;
+        }
         bubbleSort(tempVec, (int)tempVec.size());
         for (int i = 0; i < (int)tempVec.size(); i++) {
             cout << player1Name << " played for the " << tempVec[i].getYear() << " " << tempVec[i].getTeam() << endl;
@@ -170,7 +173,7 @@ int main(int argc, char *argv[]) {
             cout << player1Name << " played for the " << tempVec2[i].getYear() << " " << tempVec2[i].getTeam() << endl;
         }
     }
-    // case 3 beta version, work on progress...
+    
     if(teamName != "empty" && player1Name == "empty") {
         // case 3, print all the players played for that team
         vector <Player> tempPlayer;
@@ -178,20 +181,18 @@ int main(int argc, char *argv[]) {
 
         for (int i = 0; i < (int)allPlayers.size(); i++) {
             if (allPlayers[i].getTeam() == teamName) {
-                //cout << allPlayers[i] << endl;
                 tempPlayer.push_back(allPlayers[i]);
             }
         }
-        // for (int i = 0; i < (int)tempPlayer.size(); i++) {
-        //     cout << tempPlayer[i] << endl;
-        // }
-
+        if ((int)tempPlayer.size() == 0) {
+            cout << teamName << " does not appear in the input file" << endl;
+            return 1;
+        }
         for (int i = 0; i < (int)tempPlayer.size(); i++) {
             int flag = 0;
             for (int j = 0; j < (int)uniquePlayer.size(); j++) {
                 if (tempPlayer[i].getName() == uniquePlayer[j].getName()) {
                     flag = 1;
-                    // tempPlayer[i].incrementAppear();
                     uniquePlayer[j].incrementAppear();
                     break;
                 }
@@ -199,8 +200,6 @@ int main(int argc, char *argv[]) {
             if (flag == 0) {
                 tempPlayer[i].incrementAppear();
                 uniquePlayer.push_back(tempPlayer[i]);
-            }else {
-                
             }
         }
         bubbleSortAlpha(uniquePlayer, (int)uniquePlayer.size());
@@ -229,7 +228,11 @@ int main(int argc, char *argv[]) {
         vector<Player> currentPath;
         vector<Player> shortestPath;
         shortestPath = DFS(adj, len, source, target, currentPath, shortestPath);
-        cout << "shortest path" << endl;
+        //cout << "shortest path" << endl;
+        if ((int)shortestPath.size() == 0) {
+            cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
+            return 1; 
+        }
         for(int i = 0; i < (int)shortestPath.size(); i++) {
             cout << shortestPath.at(i) << " --> ";
         }
@@ -251,18 +254,18 @@ int main(int argc, char *argv[]) {
             }
         }
         if(source.getName() == "empty") {
-            cout << "ERROR: player cannot found." << endl;
+            cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
             return 1;
         }
         if(target.getName() == "empty") {
-            cout << "ERROR: player cannot found." << endl;
+            cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
             return 1;
         }
         addEdge(adj, len);
         vector<Player> currentPath;
         vector<Player> shortestPath;
         shortestPath = DFSTeam(adj, len, source, target, currentPath, shortestPath, teamName);
-        cout << "shortest path" << endl;
+        //cout << "shortest path" << endl;
         for(int i = 0; i < (int)shortestPath.size(); i++) {
             cout << shortestPath.at(i) << " --> ";
         }
@@ -273,22 +276,22 @@ int main(int argc, char *argv[]) {
 // int main() {
 //     Player p1("Dora Demirkir", "Trabzonspor", "1996");
 //     Player p2("Dora Demirkir", "Trabzonspor", "1998");
-// 	Player p3("Dora Demirkir", "Galatasaray", "2019");
-//     // Player p3("Dora Demirkir", "Trabzonspor", "1997");
+// 	   Player p3("Dora Demirkir", "Galatasaray", "2019");
+//     Player p3("Dora Demirkir", "Trabzonspor", "1997");
 //     Player p4("Misal Kelleci", "Galatasaray", "2019");
 //     Player p5("Ayberk Aykut", "Galatasaray", "2019");
 //     Player p6("Ayberk Aykut", "Fenerbahce", "2018");
 //     Player p7("Baris Turgay", "Fenerbahce", "2018");
-//	    int len = 7;
+//	   int len = 7;
 //     vector<Player> adj[len];
-//  adj[0].push_back(p1);
-// 	adj[1].push_back(p2);
+//     adj[0].push_back(p1);
+// 	   adj[1].push_back(p2);
 //     adj[2].push_back(p3);
 //     adj[3].push_back(p4);
 //     adj[4].push_back(p5);
 //     adj[5].push_back(p6);
 //     adj[6].push_back(p7);
-//	addEdge(adj, len);
+//	   addEdge(adj, len);
 //     vector<Player> currentPath;
 //     vector<Player> shortestPath;
 //     shortestPath = DFS(adj, len, p3, p6, currentPath, shortestPath);
