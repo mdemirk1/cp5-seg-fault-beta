@@ -69,6 +69,36 @@ vector<Player> DFS(vector<Player> adj[], int len, Player &source, Player &target
 	}
 }
 
+vector<Player> DFSTeam(vector<Player> adj[], int len, Player &source, Player &target, vector<Player> currentPath, vector<Player> shortestPath, string teamName) {
+	currentPath.push_back(source);
+	if(source.equals(target) && source.getTeam() == teamName && target.getTeam() == teamName) {
+		return currentPath;
+	}
+	else {
+		for(int i = 0; i < len; i++) {
+			if(adj[i][0].equals(source)) {
+				for(int j = 1; j < (int)adj[i].size(); j++) {
+					if(search(currentPath, adj[i][j]) == -1) {
+						if((int)shortestPath.size() == 0 || (int)currentPath.size() < (int)shortestPath.size()) {
+							vector<Player> newPath = DFS(adj, len, adj[i][j], target, currentPath, shortestPath);
+							if((int)newPath.size() != 0) {
+								shortestPath = newPath;
+							}
+						}
+					}
+				}
+			}
+		}
+		if(shortestPath.back().getTeam() == teamName) {
+			return shortestPath;
+		}
+		else {
+			return shortestPath;
+		}
+		// return shortestPath;
+	}
+}
+
 // int main()
 // {
 //     Player p1("Dora Demirkir", "Trabzonspor", "1996");

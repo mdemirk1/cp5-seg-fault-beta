@@ -237,6 +237,36 @@ int main(int argc, char *argv[]) {
     }
     if(teamName != "empty" && player2Name != "empty" && player1Name != "empty") {
         // case 4b, print the shortest teammate path, look for specific team
+        int len = (int)allPlayers.size();
+        Player source;
+        Player target;
+        vector<Player> adj[len];
+        for (int i = 0; i < len; i++) {
+            adj[i].push_back(allPlayers.at(i));
+            if(allPlayers.at(i).getName() == player1Name && allPlayers.at(i).getTeam() == teamName) {
+                source = allPlayers.at(i);
+            }
+            if(allPlayers.at(i).getName() == player2Name && allPlayers.at(i).getTeam() == teamName) {
+                target = allPlayers.at(i);
+            }
+        }
+        if(source.getName() == "empty") {
+            cout << "ERROR: player cannot found." << endl;
+            return 1;
+        }
+        if(target.getName() == "empty") {
+            cout << "ERROR: player cannot found." << endl;
+            return 1;
+        }
+        addEdge(adj, len);
+        vector<Player> currentPath;
+        vector<Player> shortestPath;
+        shortestPath = DFSTeam(adj, len, source, target, currentPath, shortestPath, teamName);
+        cout << "shortest path" << endl;
+        for(int i = 0; i < (int)shortestPath.size(); i++) {
+            cout << shortestPath.at(i) << " --> ";
+        }
+        cout << endl;
     }
 }
 
