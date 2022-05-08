@@ -224,6 +224,14 @@ int main(int argc, char *argv[]) {
                 target = allPlayers.at(i);
             }
         }
+        if(source.getName() == "empty") {
+            cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
+            return 1;
+        }
+        if(target.getName() == "empty") {
+            cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
+            return 1;
+        }
         addEdge(adj, len);
         vector<Player> currentPath;
         vector<Player> shortestPath;
@@ -233,10 +241,10 @@ int main(int argc, char *argv[]) {
             cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
             return 1; 
         }
-        for(int i = 0; i < (int)shortestPath.size(); i++) {
-            cout << shortestPath.at(i) << " --> ";
+        for(int i = 0; i < (int)shortestPath.size() - 1; i++) {
+            cout << shortestPath.at(i).getName() << " played with " << shortestPath.at(i+1).getName() <<
+            " on the year " << shortestPath.at(i).getYear() << " " << shortestPath.at(i).getTeam() << endl;
         }
-        cout << endl;
     }
     if(teamName != "empty" && player2Name != "empty" && player1Name != "empty") {
         // case 4b, print the shortest teammate path, look for specific team
@@ -266,10 +274,10 @@ int main(int argc, char *argv[]) {
         vector<Player> shortestPath;
         shortestPath = DFSTeam(adj, len, source, target, currentPath, shortestPath, teamName);
         //cout << "shortest path" << endl;
-        for(int i = 0; i < (int)shortestPath.size(); i++) {
-            cout << shortestPath.at(i) << " --> ";
+        for(int i = 0; i < (int)shortestPath.size() - 1; i++) {
+            cout << shortestPath.at(i).getName() << " played with " << shortestPath.at(i+1).getName() <<
+            " on the year " << shortestPath.at(i).getYear() << " " << shortestPath.at(i).getTeam() << endl;
         }
-        cout << endl;
     }
 }
 
