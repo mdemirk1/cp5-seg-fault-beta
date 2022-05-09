@@ -5,6 +5,7 @@
 #include <list>
 using namespace std;
 
+
 int search(vector<Player> vec, Player p){
     vector<Player>::iterator it;
     it = find(vec.begin(), vec.end(), p);
@@ -23,8 +24,6 @@ void printVector(vector<Player> vec) {
 	cout << endl;
 }
 
-// A utility function to add an edge in an
-// undirected graph.
 static void addEdge(vector<Player> adj[], int len) {
 	for (int i = 0; i < len; i++) {
 		for (int j = 0; j < len; j++) {
@@ -95,30 +94,5 @@ vector<Player> DFSTeam(vector<Player> adj[], int len, Player &source, Player &ta
 		else {
 			return shortestPath;
 		}
-		// return shortestPath;
 	}
 }
-
-// int main()
-// {
-//     Player p1("Dora Demirkir", "Trabzonspor", "1996");
-// 	Player p2("Ahmet Ezdesir", "Galatasaray", "2002"); 
- 
-//     // The below line may not work on all
-//     // compilers.  If it does not work on
-//     // your compiler, please replace it with
-//     // following
-//     // vector<int> *adj = new vector<int>[V];
-//     vector<Player> adj[2];
-// 	adj[0].push_back(p1);
-// 	adj[1].push_back(p2);
-//     // Vertex numbers should be from 0 to 4.
-// 	addEdge(adj);
-// 	int len = *(&adj + 1) - adj;
-// 	for (int i = 0; i < len; i++) {
-// 		for (int j = 0; j < (int)adj[i].size(); j++) {
-// 			cout << adj[i].at(j) << endl;
-// 		}
-// 	}
-//     return 0;
-// }

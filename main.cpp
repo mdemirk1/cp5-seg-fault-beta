@@ -214,7 +214,7 @@ int main(int argc, char *argv[]) {
         Player source;
         Player target;
         vector<Player> adj[len];
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len; i++) { 
             adj[i].push_back(allPlayers.at(i));
             if(allPlayers.at(i).getName() == player1Name) {
                 source = allPlayers.at(i);
@@ -280,7 +280,6 @@ int main(int argc, char *argv[]) {
         vector<Player> currentPath;
         vector<Player> shortestPath;
         int counter2 = 0;
-        
         shortestPath = DFSTeam(adj, len, source, target, currentPath, shortestPath, teamName);
         if ((int)shortestPath.size() == 0) {
             cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
