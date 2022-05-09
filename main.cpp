@@ -9,7 +9,6 @@
 using namespace std;
 
 
-
 void bubbleSortAlpha(vector<Player>&vec, int size) {
     for(int i = 0; i < size-1; i++) {
         for(int j = 0; j < size-i-1; j++) {
@@ -235,15 +234,23 @@ int main(int argc, char *argv[]) {
         addEdge(adj, len);
         vector<Player> currentPath;
         vector<Player> shortestPath;
+        int counter = 0;
         shortestPath = DFS(adj, len, source, target, currentPath, shortestPath);
-        //cout << "shortest path" << endl;
         if ((int)shortestPath.size() == 0) {
             cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
             return 1; 
         }
         for(int i = 0; i < (int)shortestPath.size() - 1; i++) {
-            cout << shortestPath.at(i).getName() << " played with " << shortestPath.at(i+1).getName() <<
-            " on the year " << shortestPath.at(i).getYear() << " " << shortestPath.at(i).getTeam() << endl;
+            if (shortestPath.at(i).getName() != shortestPath.at(i + 1).getName()) {
+                counter++;
+            }
+        }
+        cout << player2Name << "'s " << player1Name << " number is " << counter << endl;
+        for(int i = 0; i < (int)shortestPath.size() - 1; i++) {
+            if (shortestPath.at(i).getName() != shortestPath.at(i + 1).getName()) {
+                cout << shortestPath.at(i).getName() << " played with " << shortestPath.at(i+1).getName() <<
+                " on the year " << shortestPath.at(i).getYear() << " " << shortestPath.at(i).getTeam() << endl;
+            }
         }
     }
     if(teamName != "empty" && player2Name != "empty" && player1Name != "empty") {
@@ -272,47 +279,24 @@ int main(int argc, char *argv[]) {
         addEdge(adj, len);
         vector<Player> currentPath;
         vector<Player> shortestPath;
+        int counter2 = 0;
+        
         shortestPath = DFSTeam(adj, len, source, target, currentPath, shortestPath, teamName);
-        //cout << "shortest path" << endl;
+        if ((int)shortestPath.size() == 0) {
+            cout << "No teammate path exists between " << player1Name << " and " << player2Name << endl;
+            return 1; 
+        }
         for(int i = 0; i < (int)shortestPath.size() - 1; i++) {
-            cout << shortestPath.at(i).getName() << " played with " << shortestPath.at(i+1).getName() <<
-            " on the year " << shortestPath.at(i).getYear() << " " << shortestPath.at(i).getTeam() << endl;
+            if (shortestPath.at(i).getName() != shortestPath.at(i + 1).getName()) {
+                counter2++;
+            }
+        }
+        cout << player2Name << "'s " << player1Name << " number is " << counter2 << endl;
+        for(int i = 0; i < (int)shortestPath.size() - 1; i++) {
+            if (shortestPath.at(i).getName() != shortestPath.at(i + 1).getName()) {
+                cout << shortestPath.at(i).getName() << " played with " << shortestPath.at(i+1).getName() <<
+                " on the year " << shortestPath.at(i).getYear() << " " << shortestPath.at(i).getTeam() << endl;
+            }
         }
     }
 }
-
-// int main() {
-//     Player p1("Dora Demirkir", "Trabzonspor", "1996");
-//     Player p2("Dora Demirkir", "Trabzonspor", "1998");
-// 	   Player p3("Dora Demirkir", "Galatasaray", "2019");
-//     Player p3("Dora Demirkir", "Trabzonspor", "1997");
-//     Player p4("Misal Kelleci", "Galatasaray", "2019");
-//     Player p5("Ayberk Aykut", "Galatasaray", "2019");
-//     Player p6("Ayberk Aykut", "Fenerbahce", "2018");
-//     Player p7("Baris Turgay", "Fenerbahce", "2018");
-//	   int len = 7;
-//     vector<Player> adj[len];
-//     adj[0].push_back(p1);
-// 	   adj[1].push_back(p2);
-//     adj[2].push_back(p3);
-//     adj[3].push_back(p4);
-//     adj[4].push_back(p5);
-//     adj[5].push_back(p6);
-//     adj[6].push_back(p7);
-//	   addEdge(adj, len);
-//     vector<Player> currentPath;
-//     vector<Player> shortestPath;
-//     shortestPath = DFS(adj, len, p3, p6, currentPath, shortestPath);
-// 	for (int i = 0; i < len; i++) {
-// 		for (int j = 0; j < (int)adj[i].size(); j++) {
-// 			cout << adj[i].at(j).getName() << " " << adj[i].at(j).getYear() << " --> ";
-// 		}
-//         cout << endl;
-// 	}
-//     cout << "shortest path" << endl;
-//     for(int i = 0; i < (int)shortestPath.size(); i++) {
-//         cout << shortestPath.at(i) << " --> ";
-//     }
-//     cout << endl;
-//     return 0;
-// }
